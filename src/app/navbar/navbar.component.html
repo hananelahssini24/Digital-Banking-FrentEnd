@@ -22,15 +22,15 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" routerLink="/admin/customers">Search customers</a></li>
-              <li><a class="dropdown-item" routerLink="/admin/new-customer">New customer</a></li>
+              <li *ngIf="authService.roles.includes('ADMIN')"><a class="dropdown-item" routerLink="/admin/new-customer">New customer</a></li>
             </ul>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
         </ul>
-        <ul  class="navbar">
-          <li class="text-success nav-item" *ngIf="authService.isAuthenticated==true">{{this.authService.username}} </li>
+        <ul  *ngIf="authService.isAuthenticated==true" class="navbar list-unstyled">
+          <li class="text-white nav-item m-2" >{{this.authService.username}} </li>
           <li ><button (click)="handleLogout()" class="btn btn-success">LogOut</button></li>
         </ul>
       </div>
