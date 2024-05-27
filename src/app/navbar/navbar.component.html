@@ -29,10 +29,10 @@
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        <ul  class="navbar">
+          <li class="text-success nav-item" *ngIf="authService.isAuthenticated==true">{{this.authService.username}} </li>
+          <li ><button (click)="handleLogout()" class="btn btn-success">LogOut</button></li>
+        </ul>
       </div>
     </div>
   </nav>

@@ -7,11 +7,12 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root'
 })
 export class AuthService {
+
   
   isAuthenticated :boolean=false;
   roles:any;
   username:any;
-  accessToken!:string;
+  accessToken!:any;
    constructor(private http:HttpClient) { }
   public login(username:string,password:string){
     let options={ headers : new HttpHeaders().set("Content-Type","application/x-www-form-urlencoded")}
@@ -21,8 +22,16 @@ export class AuthService {
 }
 public loadProfile(data: any) {
   this.accessToken=data["access-token"];
-  let decodeJwt:any=jwtDecode(this.accessToken);
-  this.username=decodeJwt.sub;
-  this.roles=decodeJwt.scope;
+   let decodeJwt:any=jwtDecode(this.accessToken);
+   this.username=decodeJwt.sub;
+   this.roles=decodeJwt.scope;
+   this.isAuthenticated=true;
 }
+logout() {
+  this.isAuthenticated=false;
+  this.accessToken=undefined;
+  this.username=undefined;
+  this.roles=undefined;
+}
+
 }

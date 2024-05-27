@@ -23,8 +23,9 @@ export class LoginComponent implements OnInit{
     let password=this.formLogin.value.password;
    this.authService.login(username,password).subscribe({
     next:data=>{
-     this.authService.loadProfile(data);
-     this.router.navigateByUrl("/admin")
+      console.log(data);
+        this.authService.loadProfile(data);
+        this.router.navigateByUrl("/admin")
     },
     error:error=>{
       console.log(error);
