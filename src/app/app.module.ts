@@ -36,12 +36,12 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
     
   ],
   providers: [
-    //  provideHttpClient(withInterceptors([appHttpInterceptor])),
-    {
-      provide:HTTP_INTERCEPTORS,
-    useClass:appHttpInterceptor,
-    multi:true
-    }
+     provideHttpClient(withInterceptors([appHttpInterceptor])),
+    // {
+    //   provide:HTTP_INTERCEPTORS,
+    // useClass:appHttpInterceptor,
+    // multi:true
+    // }
 ],
   bootstrap: [AppComponent]
 })
